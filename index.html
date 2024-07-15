@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 5 Offcanvas Example</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Ganti dengan path yang sesuai -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d491125819.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon-hamster-container">
+            <img class="hamster-icon" src="images/image1.png" alt="">
+        </div>
+        <div class="airdrop-information">
+            <h2>Airdrop tasks</h2>
+            <p>Listing sedang dalam proses. Tugas akan muncul di bawah. Selesaikan mereka untuk berpartisipasi dalam
+                Airdrop</p>
+        </div>
+
+        <div class="tasks">
+            Daftar Tugas
+        </div>
+
+        <div id="ton" class="list-task-container mt-3">
+            <div class="row list-task align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="wallet-image">
+                        <img src="images/image2.png" alt="">
+                        Hubungkan dompet TON Anda
+                    </div>
+                </div>
+                <div class="col-auto justify-content-end check-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+        <div id="dana" class="list-task-container mt-3">
+            <div class="row list-task align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="wallet-image">
+                        <img src="images/image5.png" alt="">
+                        Transfer ke dompet digital DANA
+                    </div>
+                </div>
+                <div class="col-auto justify-content-end check-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+        <div id="gopay" class="list-task-container mt-3">
+            <div class="row list-task align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="wallet-image">
+                        <img src="images/image6.png" alt="" class="rounded-circle">
+                        Transfer ke dompet digital GOPAY
+                    </div>
+                </div>
+                <div class="col-auto justify-content-end check-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+        <div id="indomaret" class="list-task-container mt-3">
+            <div class="row list-task align-items-center justify-content-between">
+                <div class="col-auto">
+                    <div class="wallet-image">
+                        <img src="images/image7.png" alt="">
+                        Penarikan melalui agent INDOMARET
+                    </div>
+                </div>
+                <div class="col-auto justify-content-end check-icon">
+                    <i class="bi bi-check-circle-fill"></i>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            aria-controls="offcanvasExample">
+            Toggle Offcanvas
+        </button> -->
+
+        <!-- Offcanvas TON -->
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvaston" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="text-center">
+                <div class="image-wallet-ofcanvas">
+                    <img src="images/image2.png" alt="" srcset="">
+                </div>
+                <div class="wallet-information-canvas">
+                    <h2>Dompet TON Anda terhubung</h2>
+                    <p>Anda dapat memutuskan koneksi atau menyalin alamat dompet</p>
+                </div>
+                <div class="wallet-address align-items-center">
+                    <div class="close-icon"><i class="bi bi-x-lg"></i></div>
+                    <div class="wallet-address-more">
+                        <i class="fa-solid fa-wallet"></i>
+                        <p>UQC2eaha...65hE3kWC</p>
+                        <img src="images/image3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- offcanvas elemen DANA -->
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvaswallet"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="text-center">
+                <div class="image-wallet-ofcanvas">
+                    <img id="image-wallet" src="images/image5.png" alt="" srcset="">
+                </div>
+
+                <div class="mb-3 text-start mx-2 my-3">
+                    <label for="recipientName" class="form-label form-label-dark">Nama Penerima</label>
+                    <input type="text" class="form-control form-control-dark" id="recipientName"
+                        placeholder="Masukkan nama penerima">
+                </div>
+                <div class="mb-3 text-start mx-2">
+                    <label for="phoneNumber" class="form-label form-label-dark">Nomor Rekening</label>
+                    <input type="tel" class="form-control form-control-dark" id="phoneNumber"
+                        placeholder="Masukkan nomor telepon">
+                </div>
+                <button id="submit" type="submit" class="btn btn-primary">Konfirmasi</button>
+            </div>
+        </div>
+
+        <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasindomaret"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasExampleLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="text-center">
+                <div class="image-wallet-ofcanvas">
+                    <img id="image-wallet" src="images/image7.png" alt="" srcset="">
+                </div>
+                <div class="indoamret-information">
+                    <p>Silahkan tunjukan kode berikut kepada kasir indomaret, dan beritahu bahwasanya akan melakukan
+                        penarikan HAMSTER KOIN </p>
+                </div>
+
+                <div class="container">
+                    <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Lihat Kode Penukaran
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body bg-dark">
+                            I9HS6-6YS8B-78HS2-WU81W
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <img src="images/image4.png" alt="Footer Image">
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+        integrity="sha512-43Q/RcADZntHxyrFSU8ULZm+K1UcODQQmwwW0xPLi7ot8d1ZbY0E5PZmQphK9iF6H3rI1e3oQHxI69czzjN8QQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // JavaScript untuk menangani klik pada ikon untuk menampilkan offcanvas
+        document.getElementById('ton').addEventListener('click', () => {
+            const offcanvaston = new bootstrap.Offcanvas(document.getElementById('offcanvaston'));
+            offcanvaston.show();
+        })
+        document.getElementById('dana').addEventListener('click', () => {
+            console.log('object');
+            const offcanvaston = new bootstrap.Offcanvas(document.getElementById('offcanvaswallet'));
+            image = document.getElementById('image-wallet')
+            image.src = 'images/image5.png'
+            image.classList.remove('rounded-circle')
+            offcanvaston.show();
+        })
+        document.getElementById('gopay').addEventListener('click', () => {
+            console.log('object');
+            const offcanvaston = new bootstrap.Offcanvas(document.getElementById('offcanvaswallet'));
+            image = document.getElementById('image-wallet')
+            image.src = 'images/image6.png'
+            image.classList.add('rounded-circle')
+            offcanvaston.show();
+        })
+        document.getElementById('indomaret').addEventListener('click', () => {
+            const offcanvaston = new bootstrap.Offcanvas(document.getElementById('offcanvasindomaret'));
+
+            offcanvaston.show();
+        })
+        document.getElementById('submit').addEventListener('click', () => {
+            Swal.fire({
+                title: "Apakah data yang anda masukan sudah benar?",
+                showCancelButton: true,
+                confirmButtonText: "konfirmasi",
+                denyButtonText: `Periksa Kembali`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire("Penarikan Berhasil! Silahkan Perikasa Rekening Anda", "", "success");
+                } else if (result.isDenied) {
+                    Swal.fire("", "", "info");
+                }
+            });
+        })
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const elem = document.documentElement; // Ambil elemen <html>
+
+            // Coba masuk ke mode fullscreen
+            const requestFullScreen = elem.requestFullscreen || elem.mozRequestFullScreen || elem.webkitRequestFullscreen || elem.msRequestFullscreen;
+
+            if (requestFullScreen) {
+                requestFullScreen.call(elem);
+            } else {
+                console.log("Browser Anda tidak mendukung fitur fullscreen.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>
